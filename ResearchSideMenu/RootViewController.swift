@@ -10,8 +10,8 @@ import UIKit
 
 class RootViewController: UIViewController {
     
-    var contentViewContainer:UIView!
-    var menuViewContainer:UIView!
+//    var contentViewContainer:UIView!
+//    var menuViewContainer:UIView!
     
     var contentViewController:UIViewController!
     var menuViewController:UIViewController!
@@ -29,13 +29,43 @@ class RootViewController: UIViewController {
         super.awakeFromNib()
         print("RootViewController.awakeFromNib");
         
-        contentViewContainer = UIView()
-        menuViewContainer = UIView()
+        self.view.backgroundColor = UIColor.magentaColor()
         
-        self.view.addSubview(contentViewContainer)
-        self.view.addSubview(menuViewContainer)
+        // コンテナ作成
+//        let height = self.view.bounds.size.height
+//        contentViewContainer = UIView(frame:CGRectMake(0,height/3,self.view.bounds.size.width, height/3))
+//        menuViewContainer    = UIView(frame:CGRectMake(0,0,self.view.bounds.size.width, height/3))
+//        contentViewContainer.backgroundColor = UIColor.blueColor()
+//        menuViewContainer.backgroundColor = UIColor.brownColor()
         
+//        // コンテナを子ビューとして追加
+//        self.view.addSubview(contentViewContainer)
+//        self.view.addSubview(menuViewContainer)
+        
+        // 各ViewControllerをロード
         self.menuViewController = self.storyboard?.instantiateViewControllerWithIdentifier("menu")
+        self.contentViewController = self.storyboard?.instantiateViewControllerWithIdentifier("content")
+        
+        // メニューViewControllerを登録
+        // 子ViewControllerとして追加.
+        // ViewControllerのViewをコンテナに追加
+        self.addChildViewController(self.menuViewController)
+//        self.menuViewController.view.frame = menuViewContainer.frame
+        self.view.addSubview(self.menuViewController.view)
+        self.menuViewController.didMoveToParentViewController(self)
+        
+        // コンテンツViewControllerを登録
+        // 子ViewControllerとして追加.
+        // ViewControllerのViewをコンテナに追加
+        self.addChildViewController(self.contentViewController)
+        self.view.addSubview(self.contentViewController.view)
+//        self.contentViewController.view.frame = CGRectMake(0, 0, contentViewContainer.frame.size.width, contentViewContainer.frame.size.height)
+        self.contentViewController.didMoveToParentViewController(self)
+
+        // メニューは非表示にする
+        // コンテンツを前に出す
+        self.menuViewController.view.hidden = true
+        self.view.bringSubviewToFront(self.menuViewController.view)
     }
     
     override func viewDidLoad() {
@@ -59,14 +89,19 @@ class RootViewController: UIViewController {
         super.viewDidDisappear(animated)
         print("RootViewController.viewDidDisappear(\(animated))");
     }
-    
-    @IBAction func onTouchBootMenuButton(sender: UIButton) {
-        print("RootViewController.onTouchBootMenuButton")
-        self.addChildViewController(self.menuViewController)
-        self.menuViewController.view.frame = self.view.bounds
-        self.menuViewContainer.addSubview(self.menuViewController.view)
-        self.menuViewController.didMoveToParentViewController(self)
-        self.view.bringSubviewToFront(self.menuViewContainer)
+}
+
+extension UIViewController {
+    func rootViewController() -> RootViewController? {
+        var vc = self.parentViewController
+        while(vc != nil){
+            guard let viewController = vc else { return nil }
+            if viewController is RootViewController {
+                return viewController as? RootViewController
+            }
+            vc = viewController.parentViewController
+        }
+        return nil
     }
 }
 

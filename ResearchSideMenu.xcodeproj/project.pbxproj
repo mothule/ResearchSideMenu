@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5420942D1D8FF2D700F00147 /* ContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5420942C1D8FF2D700F00147 /* ContentViewController.swift */; };
+		5420942F1D90349C00F00147 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5420942E1D90349C00F00147 /* ProfileViewController.swift */; };
 		546AC3041D8ED83100CC4340 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546AC3031D8ED83100CC4340 /* AppDelegate.swift */; };
 		546AC3061D8ED83100CC4340 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 546AC3051D8ED83100CC4340 /* RootViewController.swift */; };
 		546AC3091D8ED83100CC4340 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 546AC3071D8ED83100CC4340 /* Main.storyboard */; };
@@ -16,6 +18,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5420942C1D8FF2D700F00147 /* ContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentViewController.swift; sourceTree = "<group>"; };
+		5420942E1D90349C00F00147 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		546AC3001D8ED83100CC4340 /* ResearchSideMenu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ResearchSideMenu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		546AC3031D8ED83100CC4340 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		546AC3051D8ED83100CC4340 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
@@ -59,10 +63,12 @@
 				546AC3031D8ED83100CC4340 /* AppDelegate.swift */,
 				546AC3051D8ED83100CC4340 /* RootViewController.swift */,
 				546AC3151D8EE21F00CC4340 /* MenuViewController.swift */,
+				5420942C1D8FF2D700F00147 /* ContentViewController.swift */,
 				546AC3071D8ED83100CC4340 /* Main.storyboard */,
 				546AC30A1D8ED83100CC4340 /* Assets.xcassets */,
 				546AC30C1D8ED83100CC4340 /* LaunchScreen.storyboard */,
 				546AC30F1D8ED83100CC4340 /* Info.plist */,
+				5420942E1D90349C00F00147 /* ProfileViewController.swift */,
 			);
 			path = ResearchSideMenu;
 			sourceTree = "<group>";
@@ -138,7 +144,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5420942D1D8FF2D700F00147 /* ContentViewController.swift in Sources */,
 				546AC3061D8ED83100CC4340 /* RootViewController.swift in Sources */,
+				5420942F1D90349C00F00147 /* ProfileViewController.swift in Sources */,
 				546AC3161D8EE21F00CC4340 /* MenuViewController.swift in Sources */,
 				546AC3041D8ED83100CC4340 /* AppDelegate.swift in Sources */,
 			);
@@ -290,6 +298,7 @@
 				546AC3141D8ED83100CC4340 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

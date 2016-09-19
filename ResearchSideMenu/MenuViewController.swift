@@ -47,6 +47,47 @@ class MenuViewController : UIViewController {
         print("MenuViewController.viewDidDisappear(\(animated))");
     }
 
+    @IBAction func onTouchCloseButton(sender: UIButton) {
+        print("MenuViewController.onTouchSecondButton")
+
+        beginAppearanceTransition(false, animated: true)
+        UIView.animateWithDuration(0.3, delay: 0, options: .CurveEaseOut, animations: {[weak self] in
+            self?.view.frame = CGRectOffset(self!.view.frame, -self!.view.bounds.size.width / 2, 0)
+        }, completion: {[weak self] _ in
+            self?.endAppearanceTransition()
+        })
+//        willMoveToParentViewController(nil)
+//        view.removeFromSuperview()
+//        removeFromParentViewController()
+    }
+    
+    @IBAction func onTouchContentButton(sender: UIButton) {
+        print("MenuViewController.onTouchSecondButton")
+        
+        beginAppearanceTransition(false, animated: true)
+        UIView.animateWithDuration(0.3, delay: 0, options: .CurveEaseOut, animations: {[weak self] in
+            self?.view.frame = CGRectOffset(self!.view.frame, -self!.view.bounds.size.width / 2, 0)
+            }, completion: {[weak self] _ in
+                self?.endAppearanceTransition()
+            })
+        //        willMoveToParentViewController(nil)
+        //        view.removeFromSuperview()
+        //        removeFromParentViewController()
+    }
+    
+    @IBAction func onTouchProfileButton(sender: UIButton) {
+        print("MenuViewController.onTouchSecondButton")
+        
+        beginAppearanceTransition(false, animated: true)
+        UIView.animateWithDuration(0.3, delay: 0, options: .CurveEaseOut, animations: {[weak self] in
+            self?.view.frame = CGRectOffset(self!.view.frame, -self!.view.bounds.size.width / 2, 0)
+            }, completion: {[weak self] _ in
+                self?.endAppearanceTransition()
+            })
+        //        willMoveToParentViewController(nil)
+        //        view.removeFromSuperview()
+        //        removeFromParentViewController()
+    }
 
 }
 
