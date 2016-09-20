@@ -50,12 +50,9 @@ class MenuViewController : UIViewController {
     @IBAction func onTouchCloseButton(sender: UIButton) {
         print("MenuViewController.onTouchSecondButton")
 
-        beginAppearanceTransition(false, animated: true)
-        UIView.animateWithDuration(0.3, delay: 0, options: .CurveEaseOut, animations: {[weak self] in
-            self?.view.frame = CGRectOffset(self!.view.frame, -self!.view.bounds.size.width / 2, 0)
-        }, completion: {[weak self] _ in
-            self?.endAppearanceTransition()
-        })
+        guard let rootViewController = rootViewController() else {return }
+        rootViewController.dismissMenuViewController()
+
 //        willMoveToParentViewController(nil)
 //        view.removeFromSuperview()
 //        removeFromParentViewController()
@@ -64,12 +61,8 @@ class MenuViewController : UIViewController {
     @IBAction func onTouchContentButton(sender: UIButton) {
         print("MenuViewController.onTouchSecondButton")
         
-        beginAppearanceTransition(false, animated: true)
-        UIView.animateWithDuration(0.3, delay: 0, options: .CurveEaseOut, animations: {[weak self] in
-            self?.view.frame = CGRectOffset(self!.view.frame, -self!.view.bounds.size.width / 2, 0)
-            }, completion: {[weak self] _ in
-                self?.endAppearanceTransition()
-            })
+        guard let rootViewController = rootViewController() else {return }
+        rootViewController.dismissMenuViewController()
         //        willMoveToParentViewController(nil)
         //        view.removeFromSuperview()
         //        removeFromParentViewController()
@@ -78,12 +71,12 @@ class MenuViewController : UIViewController {
     @IBAction func onTouchProfileButton(sender: UIButton) {
         print("MenuViewController.onTouchSecondButton")
         
-        beginAppearanceTransition(false, animated: true)
-        UIView.animateWithDuration(0.3, delay: 0, options: .CurveEaseOut, animations: {[weak self] in
-            self?.view.frame = CGRectOffset(self!.view.frame, -self!.view.bounds.size.width / 2, 0)
-            }, completion: {[weak self] _ in
-                self?.endAppearanceTransition()
-            })
+        guard let rootViewController = rootViewController() else {return }
+        rootViewController.dismissMenuViewController()
+        
+        // TODO: ProfileViewController を RootViewController.contentViewControllerにセットする.
+        // 既存ViewControllerの開放処理後、ProfileViewControllerの登録処理を行う.
+        
         //        willMoveToParentViewController(nil)
         //        view.removeFromSuperview()
         //        removeFromParentViewController()

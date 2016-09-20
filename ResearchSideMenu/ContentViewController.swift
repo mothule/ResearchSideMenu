@@ -47,35 +47,17 @@ class ContentViewController : UIViewController{
         print("ContentViewController.viewDidDisappear(\(animated))");
     }
     
-    //TODO: Close/Open処理 をRootViewControllerに委譲させる.
+
     @IBAction func onTouchBootMenuButton(sender: UIButton) {
         print("ContentViewController.onTouchBootMenuButton")
-        
         guard let rootViewController = rootViewController() else { return }
-        
-        let menuViewController = rootViewController.menuViewController
-        menuViewController.beginAppearanceTransition(true, animated: true)
-        rootViewController.menuViewController.view.hidden = false
-        rootViewController.menuViewController.view.frame = CGRectOffset(menuViewController.view.frame, -menuViewController.view.frame.size.width, 0)
-        UIView.animateWithDuration(0.3, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.3, options: UIViewAnimationOptions.CurveEaseOut, animations: {
-            let bounds = menuViewController.view.bounds
-            self.rootViewController()!.menuViewController.view.frame = CGRectMake(-bounds.size.width / 2, 0, bounds.size.width, bounds.size.height)
-        }, completion: {_ in
-            self.rootViewController()!.menuViewController.endAppearanceTransition()
-        })
+        rootViewController.presentMenuViewController()
     }
     
     @IBAction func onTouchCloseMenuButton(sender: UIButton) {
-        
+        print("ContentViewController.onTouchCloseMenuButton")
         guard let rootViewController = rootViewController() else {return }
-        
-        let menuViewController = rootViewController.menuViewController
-        menuViewController.beginAppearanceTransition(false, animated: true)
-        UIView.animateWithDuration(0.3, delay: 0, options: .CurveEaseOut, animations: { 
-            menuViewController.view.frame = CGRectOffset(menuViewController.view.frame, -menuViewController.view.bounds.size.width / 2, 0)
-            }, completion: {_ in
-                menuViewController.endAppearanceTransition()
-            })
+        rootViewController.dismissMenuViewController()
     }
 
 }

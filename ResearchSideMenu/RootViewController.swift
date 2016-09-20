@@ -10,9 +10,6 @@ import UIKit
 
 class RootViewController: UIViewController {
     
-//    var contentViewContainer:UIView!
-//    var menuViewContainer:UIView!
-    
     var contentViewController:UIViewController!
     var menuViewController:UIViewController!
 
@@ -29,19 +26,6 @@ class RootViewController: UIViewController {
         super.awakeFromNib()
         print("RootViewController.awakeFromNib");
         
-        self.view.backgroundColor = UIColor.magentaColor()
-        
-        // コンテナ作成
-//        let height = self.view.bounds.size.height
-//        contentViewContainer = UIView(frame:CGRectMake(0,height/3,self.view.bounds.size.width, height/3))
-//        menuViewContainer    = UIView(frame:CGRectMake(0,0,self.view.bounds.size.width, height/3))
-//        contentViewContainer.backgroundColor = UIColor.blueColor()
-//        menuViewContainer.backgroundColor = UIColor.brownColor()
-        
-//        // コンテナを子ビューとして追加
-//        self.view.addSubview(contentViewContainer)
-//        self.view.addSubview(menuViewContainer)
-        
         // 各ViewControllerをロード
         self.menuViewController = self.storyboard?.instantiateViewControllerWithIdentifier("menu")
         self.contentViewController = self.storyboard?.instantiateViewControllerWithIdentifier("content")
@@ -50,7 +34,6 @@ class RootViewController: UIViewController {
         // 子ViewControllerとして追加.
         // ViewControllerのViewをコンテナに追加
         self.addChildViewController(self.menuViewController)
-//        self.menuViewController.view.frame = menuViewContainer.frame
         self.view.addSubview(self.menuViewController.view)
         self.menuViewController.didMoveToParentViewController(self)
         
@@ -59,7 +42,6 @@ class RootViewController: UIViewController {
         // ViewControllerのViewをコンテナに追加
         self.addChildViewController(self.contentViewController)
         self.view.addSubview(self.contentViewController.view)
-//        self.contentViewController.view.frame = CGRectMake(0, 0, contentViewContainer.frame.size.width, contentViewContainer.frame.size.height)
         self.contentViewController.didMoveToParentViewController(self)
 
         // メニューは非表示にする
@@ -88,6 +70,31 @@ class RootViewController: UIViewController {
     override func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
         print("RootViewController.viewDidDisappear(\(animated))");
+    }
+    
+    // メニューViewControllerの表示
+    func presentMenuViewController(){
+        menuViewController.beginAppearanceTransition(true, animated: true)
+        self.menuViewController.view.hidden = false
+        self.menuViewController.view.frame = CGRectOffset(menuViewController.view.frame, -menuViewController.view.frame.size.width, 0)
+        UIView.animateWithDuration(0.3, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.3, options: UIViewAnimationOptions.CurveEaseOut, animations: {
+            let bounds = self.menuViewController.view.bounds
+            self.menuViewController.view.frame = CGRectMake(-bounds.size.width / 2, 0, bounds.size.width, bounds.size.height)
+        }, completion: {_ in
+            self.menuViewController.endAppearanceTransition()
+        })
+    }
+    
+    // メニューViewControllerの非表示
+    func dismissMenuViewController(){
+
+        self.menuViewController.beginAppearanceTransition(false, animated: true)
+        UIView.animateWithDuration(0.3, delay: 0, options: .CurveEaseOut, animations: {
+            self.menuViewController.view.frame = CGRectOffset(self.menuViewController.view.frame, -self.menuViewController.view.bounds.size.width / 2, 0)
+        }, completion: {_ in
+            self.menuViewController.view.hidden = true
+            self.menuViewController.endAppearanceTransition()
+        })
     }
 }
 
