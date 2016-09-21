@@ -64,11 +64,11 @@
 				546AC3051D8ED83100CC4340 /* RootViewController.swift */,
 				546AC3151D8EE21F00CC4340 /* MenuViewController.swift */,
 				5420942C1D8FF2D700F00147 /* ContentViewController.swift */,
+				5420942E1D90349C00F00147 /* ProfileViewController.swift */,
 				546AC3071D8ED83100CC4340 /* Main.storyboard */,
 				546AC30A1D8ED83100CC4340 /* Assets.xcassets */,
 				546AC30C1D8ED83100CC4340 /* LaunchScreen.storyboard */,
 				546AC30F1D8ED83100CC4340 /* Info.plist */,
-				5420942E1D90349C00F00147 /* ProfileViewController.swift */,
 			);
 			path = ResearchSideMenu;
 			sourceTree = "<group>";

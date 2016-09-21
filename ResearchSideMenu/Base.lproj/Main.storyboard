@@ -118,30 +118,47 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2BW-fZ-atH">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="Boot Menu">
+                                    <color key="titleColor" red="1" green="1" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="onTouchBootMenuButton:" destination="MFb-36-tjk" eventType="touchUpInside" id="YSw-8h-GMc"/>
+                                </connections>
+                            </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="0.39882238540582671" blue="0.33744959721242651" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="2BW-fZ-atH" firstAttribute="centerY" secondItem="CcE-Tb-d5w" secondAttribute="centerY" id="17W-Q2-PVn"/>
                             <constraint firstItem="5Bd-Mq-lxx" firstAttribute="centerY" secondItem="CcE-Tb-d5w" secondAttribute="centerY" id="XG9-0C-aQx">
                                 <variation key="widthClass=compact" constant="-262"/>
                             </constraint>
+                            <constraint firstItem="2BW-fZ-atH" firstAttribute="centerX" secondItem="CcE-Tb-d5w" secondAttribute="centerX" id="jVO-4h-XnA"/>
                             <constraint firstItem="5Bd-Mq-lxx" firstAttribute="centerX" secondItem="CcE-Tb-d5w" secondAttribute="centerX" id="why-NC-rKE"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="5Bd-Mq-lxx"/>
+                                <exclude reference="2BW-fZ-atH"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="XG9-0C-aQx"/>
                                 <exclude reference="why-NC-rKE"/>
+                                <exclude reference="17W-Q2-PVn"/>
+                                <exclude reference="jVO-4h-XnA"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
                             <mask key="subviews">
                                 <include reference="5Bd-Mq-lxx"/>
+                                <include reference="2BW-fZ-atH"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="XG9-0C-aQx"/>
                                 <include reference="why-NC-rKE"/>
+                                <include reference="17W-Q2-PVn"/>
+                                <include reference="jVO-4h-XnA"/>
                             </mask>
                         </variation>
                     </view>

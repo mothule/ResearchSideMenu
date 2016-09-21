@@ -10,5 +10,8 @@ import Foundation
 import UIKit
 
 class ProfileViewController : UIViewController{
-    
+    @IBAction func onTouchBootMenuButton(sender: UIButton) {
+        guard let rootViewController = rootViewController() else { return }
+        rootViewController.presentMenuViewController()
+    }
 }

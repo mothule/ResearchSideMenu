@@ -53,9 +53,6 @@ class MenuViewController : UIViewController {
         guard let rootViewController = rootViewController() else {return }
         rootViewController.dismissMenuViewController()
 
-//        willMoveToParentViewController(nil)
-//        view.removeFromSuperview()
-//        removeFromParentViewController()
     }
     
     @IBAction func onTouchContentButton(sender: UIButton) {
@@ -63,9 +60,6 @@ class MenuViewController : UIViewController {
         
         guard let rootViewController = rootViewController() else {return }
         rootViewController.dismissMenuViewController()
-        //        willMoveToParentViewController(nil)
-        //        view.removeFromSuperview()
-        //        removeFromParentViewController()
     }
     
     @IBAction func onTouchProfileButton(sender: UIButton) {
@@ -74,12 +68,25 @@ class MenuViewController : UIViewController {
         guard let rootViewController = rootViewController() else {return }
         rootViewController.dismissMenuViewController()
         
-        // TODO: ProfileViewController を RootViewController.contentViewControllerにセットする.
-        // 既存ViewControllerの開放処理後、ProfileViewControllerの登録処理を行う.
+        //TODO: RootViewControllerにSetContentViewControllerメソッドを用意し、下記処理を抽出する.
+        guard let contentViewController = rootViewController.contentViewController else {return }
+        guard contentViewController.dynamicType != ProfileViewController.self else{return}
         
-        //        willMoveToParentViewController(nil)
-        //        view.removeFromSuperview()
-        //        removeFromParentViewController()
+        contentViewController.willMoveToParentViewController(nil)
+        contentViewController.view.removeFromSuperview()
+        contentViewController.removeFromParentViewController()
+        
+        let profileViewController = self.storyboard!.instantiateViewControllerWithIdentifier("profile")
+        rootViewController.contentViewController = profileViewController
+        rootViewController.view.addSubview(profileViewController.view)
+        rootViewController.view.bringSubviewToFront(rootViewController.menuViewController.view)
+        rootViewController.addChildViewController(profileViewController)
+        profileViewController.view.alpha = 0
+        UIView.animateWithDuration(0.3, animations: {
+            profileViewController.view.alpha = 1
+        }, completion: { _ in
+            profileViewController.didMoveToParentViewController(rootViewController)
+        })
     }
 
 }
