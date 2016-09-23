@@ -15,7 +15,7 @@ class MenuViewController : UIViewController {
         super.init(coder: aDecoder)
         print("MenuViewController.init(coder)");
     }
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         print("MenuViewController.init(nibName, bundle)");
     }
@@ -30,19 +30,19 @@ class MenuViewController : UIViewController {
         print("MenuViewController.viewDidLoad");
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         print("MenuViewController.viewWillAppear(\(animated))");
     }
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         print("MenuViewController.viewDidAppear(\(animated))");
     }
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         print("MenuViewController.viewWillDisappear(\(animated))");
     }
-    override func viewDidDisappear(animated: Bool) {
+    override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         print("MenuViewController.viewDidDisappear(\(animated))");
     }
@@ -70,22 +70,22 @@ class MenuViewController : UIViewController {
         
         //TODO: RootViewControllerにSetContentViewControllerメソッドを用意し、下記処理を抽出する.
         guard let contentViewController = rootViewController.contentViewController else {return }
-        guard contentViewController.dynamicType != ProfileViewController.self else{return}
+        guard type(of: contentViewController) != ProfileViewController.self else{return}
         
-        contentViewController.willMoveToParentViewController(nil)
+        contentViewController.willMove(toParentViewController: nil)
         contentViewController.view.removeFromSuperview()
         contentViewController.removeFromParentViewController()
         
-        let profileViewController = self.storyboard!.instantiateViewControllerWithIdentifier("profile")
+        let profileViewController = self.storyboard!.instantiateViewController(withIdentifier: "profile")
         rootViewController.contentViewController = profileViewController
         rootViewController.view.addSubview(profileViewController.view)
-        rootViewController.view.bringSubviewToFront(rootViewController.menuViewController.view)
+        rootViewController.view.bringSubview(toFront: rootViewController.menuViewController.view)
         rootViewController.addChildViewController(profileViewController)
         profileViewController.view.alpha = 0
-        UIView.animateWithDuration(0.3, animations: {
+        UIView.animate(withDuration: 0.3, animations: {
             profileViewController.view.alpha = 1
         }, completion: { _ in
-            profileViewController.didMoveToParentViewController(rootViewController)
+            profileViewController.didMove(toParentViewController: rootViewController)
         })
     }
 

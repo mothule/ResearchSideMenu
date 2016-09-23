@@ -15,7 +15,7 @@ class ContentViewController : UIViewController{
         super.init(coder: aDecoder)
         print("ContentViewController.init(coder)");
     }
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         print("ContentViewController.init(nibName, bundle)");
     }
@@ -30,19 +30,19 @@ class ContentViewController : UIViewController{
         print("ContentViewController.viewDidLoad");
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         print("ContentViewController.viewWillAppear(\(animated))");
     }
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         print("ContentViewController.viewDidAppear(\(animated))");
     }
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         print("ContentViewController.viewWillDisappear(\(animated))");
     }
-    override func viewDidDisappear(animated: Bool) {
+    override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         print("ContentViewController.viewDidDisappear(\(animated))");
     }
