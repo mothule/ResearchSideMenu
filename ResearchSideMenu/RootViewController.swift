@@ -55,6 +55,8 @@ class RootViewController: UIViewController {
         print("RootViewController.viewDidLoad");
     }
     
+    
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         print("RootViewController.viewWillAppear\(animated))");
@@ -87,13 +89,42 @@ class RootViewController: UIViewController {
     
     // メニューViewControllerの非表示
     func dismissMenuViewController(){
-
         self.menuViewController.beginAppearanceTransition(false, animated: true)
         UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut, animations: {
             self.menuViewController.view.frame = self.menuViewController.view.frame.offsetBy(dx: -self.menuViewController.view.bounds.size.width / 2, dy: 0)
         }, completion: {_ in
             self.menuViewController.view.isHidden = true
             self.menuViewController.endAppearanceTransition()
+        })
+    }
+    
+    /** 
+        コンテンツViewControllerにUIViewControllerをセット.
+     */
+    func set(contentViewController: UIViewController){
+
+        // 既存コンテンツと新コンテンツが同じであれば無視する.
+        if let currentContentViewController = self.contentViewController {
+            guard type(of:currentContentViewController) != type(of:contentViewController) else { return }
+        }
+        
+        // 既存コンテンツの開放
+        self.contentViewController.willMove(toParentViewController: nil)
+        self.contentViewController.view.removeFromSuperview()
+        self.contentViewController.removeFromParentViewController()
+        
+        // 新コンテンツのセット
+        self.contentViewController = contentViewController
+        self.view.addSubview(contentViewController.view)
+        self.view.bringSubview(toFront: self.menuViewController.view)
+        self.addChildViewController(contentViewController)
+        
+        // 新コンテンツフェードイン
+        contentViewController.view.alpha = 0
+        UIView.animate(withDuration: 0.3, animations: {
+            contentViewController.view.alpha = 1
+        }, completion: { _ in
+            contentViewController.didMove(toParentViewController: self)
         })
     }
 }
