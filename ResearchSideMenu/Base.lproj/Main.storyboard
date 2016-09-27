@@ -24,7 +24,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="211.5" y="245"/>
+            <point key="canvasLocation" x="-772" y="237"/>
         </scene>
         <!--Menu View Controller-->
         <scene sceneID="Dnr-I1-elm">
@@ -91,7 +91,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WV3-3o-VuZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1066.4000000000001" y="52.623688155922046"/>
+            <point key="canvasLocation" x="-106" y="236"/>
         </scene>
         <!--Profile View Controller-->
         <scene sceneID="smu-xF-YpA">
@@ -156,7 +156,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="06F-bZ-tXQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="390" y="918"/>
+            <point key="canvasLocation" x="1186" y="236"/>
         </scene>
         <!--Content View Controller-->
         <scene sceneID="bBh-px-nMh">
@@ -228,11 +228,11 @@
                             <mask key="constraints">
                                 <exclude reference="Tdd-nk-cUj"/>
                                 <exclude reference="b1S-nU-iaG"/>
-                                <exclude reference="47N-Qu-AIZ"/>
-                                <exclude reference="Bx6-yt-9uD"/>
                                 <exclude reference="XOU-9p-XaZ"/>
                                 <exclude reference="Za1-Z5-xHA"/>
                                 <exclude reference="rVc-5S-Nuf"/>
+                                <exclude reference="47N-Qu-AIZ"/>
+                                <exclude reference="Bx6-yt-9uD"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -244,18 +244,18 @@
                             <mask key="constraints">
                                 <include reference="Tdd-nk-cUj"/>
                                 <include reference="b1S-nU-iaG"/>
-                                <include reference="47N-Qu-AIZ"/>
-                                <include reference="Bx6-yt-9uD"/>
                                 <include reference="XOU-9p-XaZ"/>
                                 <include reference="Za1-Z5-xHA"/>
                                 <include reference="rVc-5S-Nuf"/>
+                                <include reference="47N-Qu-AIZ"/>
+                                <include reference="Bx6-yt-9uD"/>
                             </mask>
                         </variation>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2aW-ae-w2b" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1066.5" y="758"/>
+            <point key="canvasLocation" x="535" y="236"/>
         </scene>
     </scenes>
 </document>
